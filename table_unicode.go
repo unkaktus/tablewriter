@@ -11,17 +11,25 @@ const (
 )
 
 const (
-	symsRR = "─│┌┐└┘├┤┬┴┼"
-	symsTT = "━┃┏┓┗┛┣┫┳┻╋"
-	symsDD = "═║╔╗╚╝╠╣╦╩╬"
-	symsRT = "─┃┎┒┖┚┠┨┰┸╂"
-	symsTR = "━│┍┑┕┙┝┥┯┷┿"
-	symsRD = "─║╓╖╙╜╟╢╥╨╫"
-	symsDR = "═│╒╕╘╛╞╡╤╧╪"
+	symsRR      = "─│┌┐└┘├┤┬┴┼"
+	symsTT      = "━┃┏┓┗┛┣┫┳┻╋"
+	symsDD      = "═║╔╗╚╝╠╣╦╩╬"
+	symsRT      = "─┃┎┒┖┚┠┨┰┸╂"
+	symsTR      = "━│┍┑┕┙┝┥┯┷┿"
+	symsRD      = "─║╓╖╙╜╟╢╥╨╫"
+	symsDR      = "═│╒╕╘╛╞╡╤╧╪"
+	symsRounded = "─│╭╮╰╯├┤┬┴┼"
 )
 
 func simpleSyms(center, row, column string) []string {
 	return []string{row, column, center, center, center, center, center, center, center, center, center}
+}
+
+func (t *Table) SetRoundedStyle() {
+	t.syms = make([]string, 0, 11)
+	for _, sym := range []rune(symsRounded) {
+		t.syms = append(t.syms, string(sym))
+	}
 }
 
 // Use unicode box drawing symbols to achieve the specified line styles.
